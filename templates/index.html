@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tik2BD Pro | Download TikTok Videos Without Watermark — HD Quality</title>
+    <meta name="description" content="Download TikTok videos without watermark in HD quality. Fast, free, and secure TikTok downloader. Powered by SkyNet Digital AI.">
+    <meta name="keywords" content="TikTok Downloader, Download TikTok No Watermark, HD TikTok Video, Tik2BD, TikTok Video Saver">
+    <link rel="canonical" href="https://tik2bd.onrender.com/">
+    <meta property="og:title" content="Tik2BD Pro — TikTok Video Downloader">
+    <meta property="og:description" content="Download your favorite TikTok videos in HD without watermark. Free, fast & secure.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Tik2BD Pro",
+      "description": "Professional TikTok Video Downloader — No Watermark, HD Quality",
+      "applicationCategory": "MultimediaApplication"
+    }
+    </script>
+</head>
+<body>
+
+<!-- Animated background blobs -->
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+<div class="blob blob-3"></div>
+
+<!-- Toast container -->
+<div id="toastContainer" class="toast-container"></div>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar">
+    <div class="navbar-inner">
+        <a href="/" class="logo">
+            <div class="logo-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z" fill="white"/>
+                </svg>
+            </div>
+            <span class="logo-text">Tik<span>2BD</span></span>
+            <span class="logo-badge">PRO</span>
+        </a>
+        <div class="nav-links">
+            <a href="#how-it-works" class="nav-link">How it Works</a>
+            <a href="#features" class="nav-link">Features</a>
+            <a href="#faq" class="nav-link">FAQ</a>
+        </div>
+        <a href="#downloader" class="nav-cta">Try Now</a>
+    </div>
+</nav>
+
+<!-- ===== HERO SECTION ===== -->
+<section class="hero-section" id="downloader">
+    <div class="hero-content">
+        <div class="hero-badge">
+            <span class="badge-dot"></span>
+            Free & No Watermark
+        </div>
+
+        <h1 class="hero-title">
+            Download TikTok Videos
+            <span class="hero-gradient-text">Without Watermark</span>
+        </h1>
+        <p class="hero-sub">Paste any TikTok link and download in HD quality — instantly, for free.</p>
+
+        <!-- Downloader Box -->
+        <div class="downloader-box" id="downloaderBox">
+            <div class="input-wrapper" id="inputWrapper">
+                <div class="input-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/>
+                        <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/>
+                    </svg>
+                </div>
+                <input
+                    id="urlInput"
+                    type="url"
+                    placeholder="https://www.tiktok.com/@username/video/..."
+                    aria-label="TikTok URL"
+                    autocomplete="off"
+                    spellcheck="false"
+                />
+                <button onclick="pasteLink()" class="input-action-btn" id="pasteBtn" title="Paste from clipboard">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                        <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+                    </svg>
+                    Paste
+                </button>
+                <button onclick="clearInput()" class="input-action-btn danger hidden" id="clearBtn" title="Clear">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+            <button id="downloadBtn" onclick="processDownload()" class="download-main-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                    <polyline points="7 10 12 15 17 10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                <span id="downloadBtnText">Download Video</span>
+            </button>
+            <p id="quotaBadge" class="quota-badge" aria-live="polite"></p>
+        </div>
+
+        <!-- Result Area -->
+        <div id="resultArea" aria-live="polite"></div>
+
+        <!-- Quick stats -->
+        <div class="hero-stats">
+            <div class="stat-item">
+                <span class="stat-number" data-target="2400000">0</span>
+                <span class="stat-label">Videos Downloaded</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="180000">0</span>
+                <span class="stat-label">Happy Users</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="99">0</span>
+                <span class="stat-label">% Uptime</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== HOW IT WORKS ===== -->
+<section class="section" id="how-it-works">
+    <div class="section-inner">
+        <div class="section-header">
+            <span class="section-tag">Simple Process</span>
+            <h2 class="section-title">Download in 3 Easy Steps</h2>
+            <p class="section-sub">No registration, no app needed. Just paste and download.</p>
+        </div>
+
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-number">01</div>
+                <div class="step-icon-wrap">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                        <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+                    </svg>
+                </div>
+                <h3>Copy TikTok Link</h3>
+                <p>Open TikTok, tap the Share button on any video, and copy the link.</p>
+            </div>
+            <div class="step-arrow">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </div>
+            <div class="step-card">
+                <div class="step-number">02</div>
+                <div class="step-icon-wrap">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/>
+                        <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/>
+                    </svg>
+                </div>
+                <h3>Paste the Link</h3>
+                <p>Paste the copied link into the input box above and click Download.</p>
+            </div>
+            <div class="step-arrow">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </div>
+            <div class="step-card">
+                <div class="step-number">03</div>
+                <div class="step-icon-wrap">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                        <polyline points="7 10 12 15 17 10"/>
+                        <line x1="12" y1="15" x2="12" y2="3"/>
+                    </svg>
+                </div>
+                <h3>Save Your Video</h3>
+                <p>Choose HD or SD quality, click download, and save to your device!</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FEATURES ===== -->
+<section class="section features-section" id="features">
+    <div class="section-inner">
+        <div class="section-header">
+            <span class="section-tag">Why Tik2BD</span>
+            <h2 class="section-title">Everything You Need</h2>
+            <p class="section-sub">Built for speed, quality, and simplicity.</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon purple">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/>
+                    </svg>
+                </div>
+                <h3>No Watermark</h3>
+                <p>Download perfectly clean videos — no TikTok logo or branding.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon cyan">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+                    </svg>
+                </div>
+                <h3>Full HD Quality</h3>
+                <p>Get the original high-resolution video — no compression or quality loss.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon green">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                    </svg>
+                </div>
+                <h3>Lightning Fast</h3>
+                <p>Our servers process your request instantly — download starts in seconds.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon orange">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/>
+                    </svg>
+                </div>
+                <h3>Photo Slideshows</h3>
+                <p>Download TikTok photo slideshows too — all images saved separately.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon pink">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                </div>
+                <h3>100% Secure</h3>
+                <p>We never store your data or video links. Privacy is our top priority.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon blue">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/>
+                    </svg>
+                </div>
+                <h3>Mobile Friendly</h3>
+                <p>Works perfectly on Android, iPhone, tablet — any browser, any device.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="section" id="faq">
+    <div class="section-inner">
+        <div class="section-header">
+            <span class="section-tag">Help Center</span>
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-sub">Everything you need to know about Tik2BD.</p>
+        </div>
+
+        <div class="faq-list">
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>Is Tik2BD completely free to use?</span>
+                    <div class="faq-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                </button>
+                <div class="faq-answer">
+                    <p>Yes! Tik2BD is 100% free with no hidden charges or subscriptions. Normal quality downloads are completely unlimited. HD video and Photo downloads are free up to 5 per day (resets at midnight, Bangladesh time) to keep the service running for everyone.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>Do I need to install an app or create an account?</span>
+                    <div class="faq-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                </button>
+                <div class="faq-answer">
+                    <p>No installation or account required. Just open Tik2BD in your browser, paste the link, and download. It works on any device with a browser.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>Why is there no watermark on the downloaded video?</span>
+                    <div class="faq-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                </button>
+                <div class="faq-answer">
+                    <p>Tik2BD uses a special API to fetch the original source video directly — the same file before TikTok adds its watermark overlay. This gives you a clean, watermark-free file.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>What's the difference between HD and SD download?</span>
+                    <div class="faq-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                </button>
+                <div class="faq-answer">
+                    <p>HD gives you the highest available resolution — ideal for saving and sharing. SD is a smaller file size with slightly lower resolution, perfect if you have limited storage or data.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>Can I download private TikTok videos?</span>
+                    <div class="faq-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                </button>
+                <div class="faq-answer">
+                    <p>No. Tik2BD can only download publicly available videos. Private or friends-only content is inaccessible for privacy and security reasons.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>Is it safe to use? Do you store my data?</span>
+                    <div class="faq-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                </button>
+                <div class="faq-answer">
+                    <p>Absolutely safe. We do not store your URLs, personal information, or downloaded files. Each request is processed and immediately discarded from our servers.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <a href="/" class="logo footer-logo">
+                    <div class="logo-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                            <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z" fill="white"/>
+                        </svg>
+                    </div>
+                    <span class="logo-text">Tik<span>2BD</span></span>
+                </a>
+                <p class="footer-desc">The fastest and cleanest TikTok video downloader. Download HD videos without watermark — free, forever.</p>
+            </div>
+            <div class="footer-links-group">
+                <h4>Product</h4>
+                <a href="#how-it-works">How it Works</a>
+                <a href="#features">Features</a>
+                <a href="#faq">FAQ</a>
+            </div>
+            <div class="footer-links-group">
+                <h4>Company</h4>
+                <a href="/about">About Us</a>
+                <a href="/contact">Contact</a>
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms of Service</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Tik2BD Pro. All Rights Reserved.</p>
+            <p>Powered by <strong>SkyNet Digital AI</strong> &mdash; Developed by <strong>Akash Islam</strong></p>
+        </div>
+    </div>
+</footer>
+
+<script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>
